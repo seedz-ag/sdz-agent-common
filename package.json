@@ -1,0 +1,18 @@
+{
+  "name": "common",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "license": "Apache",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --declaration"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "moment": "^2.29.1",
+    "types": "https://github.com/seedz-ag/sdz-agent-types.git"
+  },
+  "devDependencies": {
+    "@types/node": "^16.7.6"
+  }
+}
