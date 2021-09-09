@@ -4,13 +4,32 @@ Este pacote contém as funçoes comuns para o Cliente de Integração Seedz.
 
 # Detalhes
 
-Logger - Logs para aplicacao
-Validator - Validacao das configuracoes do client.
+Logger - Logs para aplicação
+Validator - Validacão das configuracoes do client.
+Hydrator - Responsável pelos DTOs.
 
 ## Pacotes dependentes:
 
-- sdz-agent
-- sdz-agent-data
-- sdz-agent-database
-- sdz-agent-database-informix
-- sdz-agent-sftp
+- sdz-agent-types
+- chalk
+- moment
+
+### Estrutura de arquivos
+
+```
+ sdz-agent-common
+|__📁src
+   |__📁dto
+        |__📃hydrator.ts
+   |__📃datetime.ts
+   |__📃logger.ts
+   |__📃validator.ts
+|__⚙️.gitignore
+|__📃index.js
+|__📃index.ts
+|__⚙️LICENCE
+|__⚙️package.json
+|__📃README.md
+|__⚙️tsconfig.json
+|__⚙️yarn.lock
+```
