@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 
 const datetime_1 = __importDefault(require("./dist/datetime"));
 exports.datetime = datetime_1.default;
-const hydrator_1 = __importDefault(require("./dist/dot/hydrator"));
+const hydrator_1 = __importDefault(require("./dist/dto/hydrator"));
 exports.Hydrator = hydrator_1.default;
 const logger_1 = __importDefault(require("./dist/logger"));
 exports.Logger = logger_1.default;
