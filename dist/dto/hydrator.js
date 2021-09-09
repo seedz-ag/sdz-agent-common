@@ -10,9 +10,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Hydrator = (mapping, row) => {
     const hydrated = {};
     Object.entries(mapping).map(([to, from]) => {
-        if (from) {
-            hydrated[to] = row[from];
-        }
+        hydrated[to] = (from && row[from]) || "";
     });
     return hydrated;
 };
