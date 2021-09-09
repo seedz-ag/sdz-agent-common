@@ -11,9 +11,7 @@ const Hydrator = (mapping: HydratorMapping, row: DatabaseRow): APIEntity => {
   const hydrated = {};
 
   Object.entries(mapping).map(([to, from]) => {
-      if (from) {
-          hydrated[to] = row[from];
-      }
+    hydrated[to] = (from && row[from]) || "";
   });
 
   return hydrated;
