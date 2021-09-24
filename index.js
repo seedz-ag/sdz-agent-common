@@ -12,3 +12,5 @@ const logger_1 = __importDefault(require("./dist/logger"));
 exports.Logger = logger_1.default;
 const validator_1 = __importDefault(require("./dist/validator"));
 exports.Validator = validator_1.default;
+const progress_1 = __importDefault(require("./dist/progressBar"));
+exports.ProgressBar = progress_1.default;
