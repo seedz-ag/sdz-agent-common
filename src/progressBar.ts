@@ -6,10 +6,8 @@ class ProgressBar {
   constructor() {
     this.progress = new cliProgress.MultiBar(
       {
-        clearOnComplete: false,
-        stopOnComplete: true,
         hideCursor: true,
-        format: `[{color}{bar}\u001b[0m] | {event} {text} || {percentage}% || {value}/{total} {unit} `,
+        format: `[{color}{bar}\u001b[0m] | {event} {text} || {percentage}% || {count} {unit} `,
       },
 
       cliProgress.Presets.shades_grey
@@ -31,6 +29,9 @@ class ProgressBar {
     if (instance) {
       instance.update(total, options);
     }
+  }
+  close() {
+    this.progress.stop();
   }
 }
 

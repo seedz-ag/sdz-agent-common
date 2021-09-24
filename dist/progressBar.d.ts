@@ -5,6 +5,7 @@ declare class ProgressBar {
     create(n: string, total: number, init: number, options: any): any;
     get(n: string): any;
     update(n: string, total: number, options: any): void;
+    close(): void;
 }
 declare const _default: ProgressBar;
 export default _default;
