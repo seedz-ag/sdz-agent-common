@@ -8,10 +8,8 @@ class ProgressBar {
     constructor() {
         this.list = {};
         this.progress = new cli_progress_1.default.MultiBar({
-            clearOnComplete: false,
-            stopOnComplete: true,
             hideCursor: true,
-            format: `[{color}{bar}\u001b[0m] | {event} {text} || {percentage}% || {value}/{total} {unit} `,
+            format: `[{color}{bar}\u001b[0m] | {event} {text} || {percentage}% || {count} {unit} `,
         }, cli_progress_1.default.Presets.shades_grey);
     }
     create(n, total, init, options) {
@@ -27,6 +25,9 @@ class ProgressBar {
         if (instance) {
             instance.update(total, options);
         }
+    }
+    close() {
+        this.progress.stop();
     }
 }
 exports.default = new ProgressBar();
