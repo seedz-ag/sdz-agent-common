@@ -21,14 +21,14 @@ export default (appd: any) => {
   }
 
   const config: any = {
-    controllerHostName: env('APPD_CONTROLLER_HOST_NAME'),
-    controllerPort: env('APPD_CONTROLLER_PORT'),
-    controllerSslEnabled: env('APPD_CONTROLLER_SSL_ENABLED'),
-    accountName: env('APPD_ACCOUNT_NAME'),
-    accountAccessKey: env('APPD_ACCOUNT_ACCESS_KEY'),
-    applicationName: env('APPD_APPLICATION_NAME'),
-    tierName: env('APPD_TIER_NAME'),
-    nodeName: env('APPD_NODE_NAME'),
+    controllerHostName: env("APPD_CONTROLLER_HOST_NAME"),
+    controllerPort: env("APPD_CONTROLLER_PORT"),
+    controllerSslEnabled: env("APPD_CONTROLLER_SSL_ENABLED"),
+    accountName: env("APPD_ACCOUNT_NAME"),
+    accountAccessKey: env("APPD_ACCOUNT_ACCESS_KEY"),
+    applicationName: env("APPD_APPLICATION_NAME"),
+    tierName: env("APPD_TIER_NAME"),
+    nodeName: env("APPD_NODE_NAME"),
     debug: true,
   };
 
