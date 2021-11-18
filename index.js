@@ -4,6 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 
+const appDynamics_1 = __importDefault(require("./dist/appDynamics"));
+exports.appDynamics = appDynamics_1.default;
 const datetime_1 = __importDefault(require("./dist/datetime"));
 exports.datetime = datetime_1.default;
 const hydrator_1 = __importDefault(require("./dist/hydrator"));
