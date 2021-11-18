@@ -11,7 +11,7 @@ class Validator {
     auth() {
         try {
             logger_1.default.info(`VALIDANDO CONFIGURAÇÕES DE ${logger_1.default.bold("AUTENTICAÇÃO DE API")}.`);
-            if (!this.valid(this.config.auth.api)) {
+            if (!this.valid(this.config.api)) {
                 throw new Error();
             }
         }
@@ -21,7 +21,7 @@ class Validator {
         }
         try {
             logger_1.default.info(`VALIDANDO CONFIGURAÇÕES DE ${logger_1.default.bold("AUTENTICAÇÃO DE FTP")}.`);
-            if (!this.valid(this.config.auth.ftp)) {
+            if (!this.valid(this.config.ftp)) {
                 throw new Error();
             }
         }
