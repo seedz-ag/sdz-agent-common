@@ -15,7 +15,7 @@ const Hydrator = (mapping: HydratorMapping, row: DatabaseRow): APIEntity => {
 
   Object.entries(mapping).map(
     ([to, from]) =>
-      (hydrated[to] = `${
+      (hydrated[`${to}`.toUpperCase()] = `${
         (from && row[rowKeys[`${from}`.toUpperCase()]]) || ""
       }`.trim())
   );
