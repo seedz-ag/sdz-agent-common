@@ -42,7 +42,7 @@ class Logger {
                 break;
             default: formatter = (text) => text;
         }
-        const prefix = formatter(`${bold(this.type.toUpperCase().padEnd(7, ' '))} [${datetime_1.default()}]:`);
+        const prefix = formatter(`${bold(this.type.toUpperCase().padEnd(7, ' '))} [${(0, datetime_1.default)()}]:`);
         console.log.apply(console, [prefix, ...args]);
     }
     warning(...args) {
