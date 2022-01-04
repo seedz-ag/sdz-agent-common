@@ -3,7 +3,7 @@ declare class ProgressBar {
     private list;
     constructor();
     create(n: string, total: number, init: number, options: any): any;
-    get(n: string): any;
+    get(n: string): SingleBar;
     update(n: string, total: number, options: any): void;
     close(): void;
 }

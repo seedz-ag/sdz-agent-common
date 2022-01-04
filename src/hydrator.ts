@@ -1,7 +1,7 @@
 import { APIEntity, DatabaseRow, HydratorMapping } from "sdz-agent-types";
 
 /**
- * Convert
+ * Map column name to object correspondent attribute
  *
  * @param {object} mapping JSON DTO mapping
  * @param {object} row     Database returned row
@@ -9,10 +9,16 @@ import { APIEntity, DatabaseRow, HydratorMapping } from "sdz-agent-types";
  */
 const Hydrator = (mapping: HydratorMapping, row: DatabaseRow): APIEntity => {
   const hydrated = {};
+  const rowKeys = {};
 
-  Object.entries(mapping).map(([to, from]) => {
-    hydrated[to] = `${(from && row[from]) || ""}`.trim();
-  });
+  Object.keys(row).map((key) => (rowKeys[`${key}`.toUpperCase()] = key));
+
+  Object.entries(mapping).map(
+    ([to, from]) =>
+      (hydrated[to] = `${
+        (from && row[rowKeys[`${from}`.toUpperCase()]]) || ""
+      }`.trim())
+  );
 
   return hydrated;
 };

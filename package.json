@@ -1,5 +1,5 @@
 {
-  "name": "seedz-agent-common",
+  "name": "sdz-agent-common",
   "version": "1.0.0",
   "main": "./dist/index.js",
   "license": "Apache",

@@ -1,6 +1,5 @@
-import { APIEntity, DatabaseRow, HydratorMapping } from "sdz-agent-types";
 /**
- * Convert
+ * Map column name to object correspondent attribute
  *
  * @param {object} mapping JSON DTO mapping
  * @param {object} row     Database returned row
