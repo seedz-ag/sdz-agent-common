@@ -1,4 +1,3 @@
-import { APIEntity, DatabaseRow, HydratorMapping } from "sdz-agent-types";
 /**
  * Map column name to object correspondent attribute
  *
@@ -6,5 +5,5 @@ import { APIEntity, DatabaseRow, HydratorMapping } from "sdz-agent-types";
  * @param {object} row     Database returned row
  * @returns {object}       Mapped Entity
  */
-declare const Hydrator: (mapping: HydratorMapping, row: DatabaseRow) => APIEntity;
-export default Hydrator;
+declare const Factory: (mapping: any, row: any) => any;
+export default Factory;
