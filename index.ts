@@ -6,3 +6,4 @@ import Validator from "./src/validator";
 import ProgressBar from "./src/progressBar";
 
 export { appDynamics, datetime, Hydrator, Logger, Validator, ProgressBar };
+ 
