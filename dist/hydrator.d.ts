@@ -1,3 +1,4 @@
+import { APIEntity, DatabaseRow, HydratorMapping } from "sdz-agent-types";
 /**
  * Map column name to object correspondent attribute
  *
