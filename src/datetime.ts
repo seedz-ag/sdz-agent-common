@@ -1,3 +1,3 @@
 import moment from 'moment'
 
-export default () => moment().format('YYYY-MM-DD HH:mm:SS')
+export default () => moment().format('YYYY-MM-DD HH:mm:ss')

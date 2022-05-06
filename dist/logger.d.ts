@@ -1,6 +1,6 @@
 declare class Logger {
     private type;
-    bold(text: any): any;
+    bold(text: any): string;
     error(...args: any[]): void;
     info(...args: any[]): void;
     log(...args: any[]): void;
