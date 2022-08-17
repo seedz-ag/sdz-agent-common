@@ -13,17 +13,6 @@ export default class Validator {
   auth() {
     try {
       Logger.info(
-        `VALIDANDO CONFIGURAÇÕES DE ${Logger.bold("AUTENTICAÇÃO DE API")}.`
-      );
-      if (!this.valid(this.config.api)) {
-        throw new Error();
-      }
-    } catch {
-      Logger.error("CONFIGURAÇÕES INVÁLIDAS.");
-      process.exit(1);
-    }
-    try {
-      Logger.info(
         `VALIDANDO CONFIGURAÇÕES DE ${Logger.bold("AUTENTICAÇÃO DE FTP")}.`
       );
       if (!this.valid(this.config.ftp)) {
