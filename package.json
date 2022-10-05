@@ -6,8 +6,7 @@
   "private": true,
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc --declaration",
-    "prepare": "husky install"
+    "build": "tsc --declaration"
   },
   "dependencies": {
     "chalk": "^4.1.2",
@@ -17,13 +16,6 @@
     "sdz-agent-types": "https://github.com/seedz-ag/sdz-agent-types.git"
   },
   "devDependencies": {
-    "@commitlint/cli": "8.2.0",
-    "@commitlint/config-conventional": "8.2.0",
-    "@semantic-release/changelog": "^6.0.1",
-    "@semantic-release/git": "^10.0.1",
-    "@types/node": "^16.7.6",
-    "conventional-changelog-conventionalcommits": "^5.0.0",
-    "husky": "7.0.4",
-    "semantic-release": "^19.0.5"
+    "@types/node": "^16.7.6"
   }
 }
