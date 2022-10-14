@@ -1,4 +1,13 @@
 import { APIEntity, DatabaseRow, HydratorMapping } from "sdz-agent-types";
+
+const pipes = {
+  Capitalize: (row, value) => value.toUpperCase(),
+  Concat: (row, value, field) => {
+    return value + row[field]
+  },
+  SetValue: (row, value, newValue) => newValue
+}
+
 /**
  * Map column name to object correspondent attribute
  *
@@ -19,12 +28,22 @@ const Hydrator = (mapping: HydratorMapping, row: DatabaseRow): APIEntity => {
 
   Object.keys(row).map((key) => (rowKeys[`${key}`.toUpperCase()] = key));
 
-  Object.entries(mapping).map(
-    ([to, from]) =>
-      (hydrated[to] = `${
-        (from && isValid(row[rowKeys[`${from}`.toUpperCase()]])) ? (row[rowKeys[`${from}`.toUpperCase()]]) : ""
-      }`.trim())
-  );
+  Object.entries(mapping).forEach(([to, from]) => {
+      let value = `${((from && isValid(row[rowKeys[`${from}`.toUpperCase()]])) ? (row[rowKeys[`${from}`.toUpperCase()]]) : "")}`.trim()
+      if (to.match(/\|/)) {
+        const pipe = to.split(/\|/g)
+        to = pipe.shift();
+        pipe.forEach(pipe => {
+          const reg = new RegExp(/(.*?)\((.*?)\)/g);
+          const matches = reg.exec(pipe);
+          matches.shift();
+          const f = matches.shift();
+          const a = matches.shift().split(/,/g)
+          value = pipes[f](row, value, ...a)
+        })
+      }
+      hydrated[to] = value
+    });
   return hydrated;
 };
 
