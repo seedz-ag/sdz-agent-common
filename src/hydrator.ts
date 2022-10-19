@@ -1,10 +1,12 @@
 import { APIEntity, DatabaseRow, HydratorMapping } from "sdz-agent-types";
 
 const pipes = {
+  Append: (row, value, append) => `${value}${append}`,
   Capitalize: (row, value) => value.toUpperCase(),
   Concat: (row, value, field) => {
     return value + row[field]
   },
+  Prepend: (row, value, prepend) => `${prepend}${value}`,
   SetValue: (row, value, newValue) => newValue
 }
 
