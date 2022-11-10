@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const pipes = {
-    Append: (row, value, append) => `${value}${append}`,
-    Capitalize: (row, value) => value.toUpperCase(),
+    Append: (row, value, append) => `${value || ``}${append}`,
+    Capitalize: (row, value) => value && value.toUpperCase(),
     Concat: (row, value, field) => {
         return value + (row[field] || '');
     },
-    Prepend: (row, value, prepend) => `${prepend}${value}`,
+    Prepend: (row, value, prepend) => `${prepend}${value || ``}`,
     SetValue: (row, value, newValue) => newValue
 };
 /**
