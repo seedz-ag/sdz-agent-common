@@ -33,7 +33,7 @@ const Hydrator = (mapping: HydratorMapping, row: DatabaseRow): APIEntity => {
   Object.keys(row).map((key) => (rowKeys[`${key}`.toUpperCase()] = key));
 
   Object.entries(mapping).forEach(([to, from]) => {
-      let value = get(row, rowKeys[`${from}`.toUpperCase()], "").trim();
+      let value = `${get(row, rowKeys[`${from}`.toUpperCase()], "")}`.trim();
       if (to.match(/\|/)) {
         const pipe = to.split(/\|/g)
         to = pipe.shift();

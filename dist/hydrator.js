@@ -28,7 +28,7 @@ const Hydrator = (mapping, row) => {
     };
     Object.keys(row).map((key) => (rowKeys[`${key}`.toUpperCase()] = key));
     Object.entries(mapping).forEach(([to, from]) => {
-        let value = (0, dot_wild_1.get)(row, rowKeys[`${from}`.toUpperCase()], "").trim();
+        let value = `${(0, dot_wild_1.get)(row, rowKeys[`${from}`.toUpperCase()], "")}`.trim();
         if (to.match(/\|/)) {
             const pipe = to.split(/\|/g);
             to = pipe.shift();
