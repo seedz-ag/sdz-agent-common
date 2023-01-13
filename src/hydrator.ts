@@ -1,4 +1,6 @@
+import { get } from "dot-wild";
 import { APIEntity, DatabaseRow, HydratorMapping } from "sdz-agent-types";
+
 
 const pipes = {
   Append: (row, value, append) => `${value || ``}${append}`,
@@ -31,7 +33,7 @@ const Hydrator = (mapping: HydratorMapping, row: DatabaseRow): APIEntity => {
   Object.keys(row).map((key) => (rowKeys[`${key}`.toUpperCase()] = key));
 
   Object.entries(mapping).forEach(([to, from]) => {
-      let value = `${((from && isValid(row[rowKeys[`${from}`.toUpperCase()]])) ? (row[rowKeys[`${from}`.toUpperCase()]]) : "")}`.trim()
+      let value = get(row, rowKeys[`${from}`.toUpperCase()], "").trim();
       if (to.match(/\|/)) {
         const pipe = to.split(/\|/g)
         to = pipe.shift();

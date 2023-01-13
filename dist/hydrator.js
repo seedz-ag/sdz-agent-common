@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const dot_wild_1 = require("dot-wild");
 const pipes = {
     Append: (row, value, append) => `${value || ``}${append}`,
     Capitalize: (row, value) => value && value.toUpperCase(),
@@ -27,7 +28,7 @@ const Hydrator = (mapping, row) => {
     };
     Object.keys(row).map((key) => (rowKeys[`${key}`.toUpperCase()] = key));
     Object.entries(mapping).forEach(([to, from]) => {
-        let value = `${((from && isValid(row[rowKeys[`${from}`.toUpperCase()]])) ? (row[rowKeys[`${from}`.toUpperCase()]]) : "")}`.trim();
+        let value = (0, dot_wild_1.get)(row, rowKeys[`${from}`.toUpperCase()], "").trim();
         if (to.match(/\|/)) {
             const pipe = to.split(/\|/g);
             to = pipe.shift();
