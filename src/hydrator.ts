@@ -1,6 +1,6 @@
-import { get } from "dot-wild";
 import { APIEntity, DatabaseRow, HydratorMapping } from "sdz-agent-types";
 
+import { get } from "dot-wild";
 
 const pipes = {
   Append: (row, value, append) => `${value || ``}${append}`,
@@ -50,5 +50,21 @@ const Hydrator = (mapping: HydratorMapping, row: DatabaseRow): APIEntity => {
     });
   return hydrated;
 };
+
+const normalize = (obj: any): any => {
+  return Object.keys(obj).reduce((carrier: any, to) => {
+    switch (true) {
+      case (Array.isArray(obj[to])):
+        carrier[to] = obj[to].map(normalize)
+        break;
+      case ('object' === typeof obj[to]):
+        carrier[to] = normalize(obj[to])
+        break;
+    default:
+      carrier[to.toUpperCase()] = obj[to];
+    }
+    return carrier;
+  }, {});
+}
 
 export default Hydrator;
