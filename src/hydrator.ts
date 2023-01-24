@@ -20,7 +20,6 @@ const pipes = {
  */
 const Hydrator = (mapping: HydratorMapping, row: DatabaseRow): APIEntity => {
   const hydrated = {};
-  // const rowKeys = {};
   const flattened = flatten(row);
   let normalized = {};
 
