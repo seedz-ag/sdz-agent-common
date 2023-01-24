@@ -29,6 +29,21 @@ const Hydrator = (mapping: HydratorMapping, row: DatabaseRow): APIEntity => {
   });
 
   Object.entries(mapping).forEach(([to, from]) => {
+    let value;
+    if (to.match(/\|/)) {
+      const pipe = to.split(/\|/g);
+      to = pipe.shift();
+      pipe.forEach((pipe) => {
+        const reg = new RegExp(/(.*?)\((.*?)\)/g);
+        const matches = reg.exec(pipe);
+        matches.shift();
+        const f = matches.shift();
+        const a = matches.shift().split(/,/g);
+        value = pipes[f](row, value, ...a);
+      });
+    }
+    hydrated[to] = value;
+
     hydrated[to] = get(normalized, String(from).toUpperCase());
   });
 
