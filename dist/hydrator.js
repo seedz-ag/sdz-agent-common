@@ -19,14 +19,14 @@ const pipes = {
  */
 const Hydrator = (mapping, row) => {
     const hydrated = {};
-    const rowKeys = {};
+    // const rowKeys = {};
     const flattened = flatten(row);
     let normalized = {};
     Object.keys(flattened).map((key) => {
         normalized = (0, dot_wild_1.set)(normalized, key, flattened[key]);
     });
     Object.entries(mapping).forEach(([to, from]) => {
-        let value;
+        let value = `${from ? flattened[`${from}`.toUpperCase()] : ""}`.trim();
         if (to.match(/\|/)) {
             const pipe = to.split(/\|/g);
             to = pipe.shift();
@@ -34,12 +34,12 @@ const Hydrator = (mapping, row) => {
                 const reg = new RegExp(/(.*?)\((.*?)\)/g);
                 const matches = reg.exec(pipe);
                 matches.shift();
-                const f = matches.shift();
-                const a = matches.shift().split(/,/g);
-                value = pipes[f](row, value, ...a);
+                const key = matches.shift();
+                const fieldArray = matches.shift().split(/,/g);
+                value = pipes[key](row, value, ...fieldArray);
+                normalized[`${from}`.toUpperCase()] = value;
             });
         }
-        hydrated[to] = value;
         hydrated[to] = (0, dot_wild_1.get)(normalized, String(from).toUpperCase());
     });
     return hydrated;
