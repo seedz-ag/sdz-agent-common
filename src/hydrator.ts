@@ -40,11 +40,11 @@ const Hydrator = (mapping: HydratorMapping, row: DatabaseRow): APIEntity => {
         const key = matches.shift();
         const fieldArray = matches.shift().split(/,/g);
         value = pipes[key](row, value, ...fieldArray);
-        normalized[`${from}`.toUpperCase()] = value;
+        normalized[`${from || to}`.toUpperCase()] = value;
       });
     }
 
-    hydrated[to] = get(normalized, String(from).toUpperCase());
+    hydrated[to] = get(normalized, String(from || to).toUpperCase(), "");
   });
 
   return hydrated;
